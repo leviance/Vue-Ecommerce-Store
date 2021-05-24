@@ -24,9 +24,28 @@ export default {
   },
 
   methods: {
-    toggle_table() {
-        this.arr.push(...this.data_input.split(""));
-        this.data_input = "";
+    toggle_table(e) {
+        let check_data = ['p','b','t','x','y'];
+        let arr_data_input = [...this.data_input.split("")];
+        
+        for (let i = 0; i < arr_data_input.length; i++) {
+          arr_data_input[i] = arr_data_input[i].toLowerCase();
+
+          if(!check_data.includes(arr_data_input[i])){
+            alert("Bạn đã nhập sai dữ liệu vui lòng nhập lại!");
+
+            arr_data_input = [];
+            this.data_input = "";
+            
+            e.preventDefault();
+            return;
+          }
+        }
+
+        if(arr_data_input.length > 0) {
+          this.arr.push(...arr_data_input);
+          this.data_input = "";
+        }
     },
   },
 };

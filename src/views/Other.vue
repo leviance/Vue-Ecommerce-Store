@@ -1,8 +1,8 @@
 <template>
   <div>
     <input v-model="data_input" type="text" placeholder="enter the value" />
-    <button v-on:click="toggle_table">show table</button>
-    <div v-show="show_table">
+    <button v-on:click="toggle_table">Add</button>
+    <div>
       <Challenge :arr_input="arr" />
     </div>
   </div>
@@ -20,20 +20,13 @@ export default {
     return {
       data_input: "",
       arr: [],
-      show_table: false,
     };
   },
 
   methods: {
     toggle_table() {
-      this.show_table = !this.show_table;
-
-      if (this.show_table) {
         this.arr.push(...this.data_input.split(""));
         this.data_input = "";
-      } else {
-        this.arr = [];
-      }
     },
   },
 };

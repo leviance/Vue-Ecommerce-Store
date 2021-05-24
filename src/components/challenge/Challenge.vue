@@ -4,8 +4,8 @@
             <tr v-for="i in r_arr" :key="i">
                 <!-- <td v-for="j in c_arr" :key="j">{{result_caculate[i][j]}}</td> -->
                 <td v-for="j in c_arr" :key="j">
-                    <div class="item">
-                        <div class="dot" :class="result_caculate[i][j]"></div>
+                    <div class="item" :class="result_caculate[i][j]">
+                        <span>D</span>
                     </div>
                 </td>
             </tr>
@@ -99,38 +99,50 @@ export default {
 
 <style lang="scss">
     table, th, td {
-        border: 1px solid black;
+        border: 2px solid rgb(0, 163, 0);
         border-collapse: collapse;
 
         .item {
-            width: 25px;
-            height: 25px;
+            width: 15px;
+            height: 15px;
             padding: 10px;
+            margin: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            
-            .dot {
-                width: 6px;
-                height: 6px;
-                border-radius: 50%;
-                content: "";
-                position: relative;
-            }
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            .x{ background-color: green; }
-            .y{ background-color: red; }
-            .p{ background-color: green; }
-            .b{ background-color: red; }
-            .t{ background-color: yellow; }
-
-            .x:after, .y:after {
-                content: "D";
-                position: absolute;
-                top: -20px;
-                left: -3px;
+            span {
+                display: none;
             }
         }   
+
+        .x{ 
+            background-color: #00f; 
+
+            span {
+                display: inline;
+                color: white;
+                font-weight: 500;
+                font-size: 1rem;
+            }    
+        }
+        .y{ 
+            background-color: red; 
+
+            span {
+                display: inline;
+                color: white;
+                font-weight: 700;
+                font-size: 1.5rem;
+            }
+        }
+        .p{ background-color: #00f; }
+        .b{ background-color: red; }
+        .t{ background-color: yellow; }
     }
 </style>

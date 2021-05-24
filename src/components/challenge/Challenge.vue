@@ -2,7 +2,12 @@
     <div>
         <table>
             <tr v-for="i in r_arr" :key="i">
-                <td v-for="j in c_arr" :key="j">{{result_caculate[i][j]}}</td>
+                <!-- <td v-for="j in c_arr" :key="j">{{result_caculate[i][j]}}</td> -->
+                <td v-for="j in c_arr" :key="j">
+                    <div class="item">
+                        <div class="dot" :class="result_caculate[i][j]"></div>
+                    </div>
+                </td>
             </tr>
         </table>
     </div>
@@ -92,12 +97,40 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
     table, th, td {
         border: 1px solid black;
         border-collapse: collapse;
-        padding: 10px;
+
+        .item {
+            width: 25px;
+            height: 25px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            
+            .dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                content: "";
+                position: relative;
+            }
+
+            .x{ background-color: green; }
+            .y{ background-color: red; }
+            .p{ background-color: green; }
+            .b{ background-color: red; }
+            .t{ background-color: yellow; }
+
+            .x:after, .y:after {
+                content: "D";
+                position: absolute;
+                top: -20px;
+                left: -3px;
+            }
+        }   
     }
-
-
 </style>
